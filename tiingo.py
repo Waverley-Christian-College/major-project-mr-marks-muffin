@@ -2,9 +2,11 @@ import requests
 import json
 from datetime import datetime
 import matplotlib.pyplot as plt
+import os
 
 # Your Tiingo API token
-API_TOKEN = "API_TOKEN"
+API_TOKEN = os.getenv("API_MUFFIN")
+print(f"this is my API TOKEN: {API_TOKEN}")
 
 # Parameters
 symbol = "NVDA"
@@ -42,3 +44,4 @@ plt.tight_layout()
 plt.show()
 plt.tight_layout()
 plt.savefig("stock_chart_tiingo.png")
+1
