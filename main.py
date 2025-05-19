@@ -3,10 +3,10 @@ import json
 from datetime import datetime
 import matplotlib.pyplot as plt
 
-# --- User Input ---
-Company = input("Which company would you like to search for? ")
-Date = input("When did you buy this stock? ")
-Amount = input("How many stocks did you buy for this company? ")
+#--- User Input ---
+Company = ("Which company did you invest in? ")
+When = ("When did you invest into this company? ")
+Amount = ("How much did you invest into this company? ")
 
 # --- Bright Data Proxy Gateway Config ---
 PROXY_HOST = "brd.superproxy.io"
