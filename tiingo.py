@@ -3,9 +3,9 @@ import json
 from datetime import datetime
 import matplotlib.pyplot as plt
 import os
-import os
 
 # Your Tiingo API token
+API_TOKEN = os.getenv("API_TOKEN")
 API_TOKEN = "API_TOKEN"
 
 # Parameters
