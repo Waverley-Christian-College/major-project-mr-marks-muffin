@@ -1,16 +1,11 @@
-print("pushing stuff")
-
-
 import requests
 import json
 from datetime import datetime
 import matplotlib.pyplot as plt
 import os 
 
-
 # Your Tiingo API token
 API_TOKEN = os.getenv("API_MUFFIN")
-print(f"This is my API Token: {API_TOKEN}")
 
 #--- User Input ---
 Company = ("Which company did you invest in? ")
