@@ -3,11 +3,6 @@ import json
 from datetime import datetime
 import matplotlib.pyplot as plt
 
-#--- User Input ---
-Company = ("Which company did you invest in? ")
-When = ("When did you invest into this company? ")
-Amount = ("How much did you invest into this company? ")
-
 # --- Bright Data Proxy Gateway Config ---
 PROXY_HOST = "brd.superproxy.io"
 PROXY_PORT = "port"
@@ -20,7 +15,7 @@ proxy_url = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
 proxies = {"http": proxy_url, "https": proxy_url}
 
 # --- Yahoo Finance API config ---
-symbol = f"{Company.upper()}"
+symbol = "NVDA"
 range_ = "1mo"
 interval = "1d"
 url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range={range_}&interval={interval}"
