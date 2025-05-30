@@ -13,11 +13,6 @@ Company = ("Which company did you invest in? ")
 When = ("When did you invest into this company? ")
 Amount = ("How much did you invest into this company? ")
 
-#--- User Input ---
-Company = ("Which company did you invest in? ")
-When = ("When did you invest into this company? ")
-Amount = ("How much did you invest into this company? ")
-
 # --- Bright Data Proxy Gateway Config ---
 PROXY_HOST = "brd.superproxy.io"
 PROXY_PORT = "port"
