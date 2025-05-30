@@ -6,7 +6,7 @@ import os
 
 # Your Tiingo API token
 API_TOKEN = os.getenv("API_MUFFIN")
-print(f"This is my API Token: {API_TOKEN}")
+print(f'this is my token {API_TOKEN}')
 
 # Parameters
 symbol = "NVDA"
