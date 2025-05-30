@@ -4,6 +4,11 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import os
 
+
+
+
+
+
 # Your Tiingo API token
 API_TOKEN = os.getenv("API_MUFFIN")
 
