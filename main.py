@@ -24,7 +24,6 @@ PROXY_PORT = "port"
 PROXY_USER = "user_name"
 PROXY_PASS = "password"
 
-
 # --- Build proxy config for requests ---
 proxy_url = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
 proxies = {"http": proxy_url, "https": proxy_url}
