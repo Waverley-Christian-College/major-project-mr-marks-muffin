@@ -12,6 +12,9 @@ print(f"This is my API Token: {API_TOKEN}")
 Company = ("Which company did you invest in? ")
 When = ("When did you invest into this company? ")
 Amount = ("How much did you invest into this company? ")
+company_folder = "companies"
+
+
 
 # --- Bright Data Proxy Gateway Config ---
 PROXY_HOST = "brd.superproxy.io"
