@@ -4,7 +4,8 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import os
 
-# Your Tiingo API token
+# Your Tiingo API tok
+# en
 API_TOKEN = os.getenv("API_MUFFIN")
 if not API_TOKEN: 
     print("❌ API token not found. Please set the API_MUFFIN environment variable.")
@@ -36,8 +37,17 @@ proxy_url = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
 proxies = {"http": proxy_url, "https": proxy_url}
 
 # --- Yahoo Finance API config ---
-symbol = "NVDA"
-range_ = "1mo"
+date_str = Investment_date  # dd/mm/yyyy format
+
+# Convert string to datetime object
+dt = datetime.strptime(date_str, "%d/%m/%Y")
+
+# Now it's a datetime object, so we can call .timestamp()
+timestamp = int(dt.timestamp())
+
+print(timestamp)
+symbol = f"{Company.upper()}"
+range_ = f"{Investment_date = [datetime.fromtimestamp(ts).strftime('%Y-%m-%d') for ts in timestamps]}"
 interval = "1d"
 url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range={range_}&interval={interval}"
 
