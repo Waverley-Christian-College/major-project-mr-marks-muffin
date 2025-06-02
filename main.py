@@ -22,11 +22,6 @@ if Amount < 0:
     print("❌ Invalid amount. Please enter a positive number.")
     exit()
 
-#--- User Input ---
-Company = ("Which company did you invest in? ")
-When = ("When did you invest into this company? ")
-Amount = ("How many shares did you invest into this company? ")
-
 # --- Bright Data Proxy Gateway Config ---
 PROXY_HOST = "brd.superproxy.io"
 PROXY_PORT = "port"
@@ -38,8 +33,17 @@ proxy_url = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
 proxies = {"http": proxy_url, "https": proxy_url}
 
 # --- Yahoo Finance API config ---
+date_str = Investment_date  # dd/mm/yyyy format
+
+# Convert string to datetime object
+dt = datetime.strptime(date_str, "%d/%m/%Y")
+
+# Now it's a datetime object, so we can call .timestamp()
+timestamp = int(dt.timestamp())
+
+print(timestamp)
 symbol = f"{Company.upper()}"
-range_ = f"{When = [datetime.fromtimestamp(ts).strftime('%Y-%m-%d') for ts in timestamps]}"
+range_ = f"{Investment_date = [datetime.fromtimestamp(ts).strftime('%Y-%m-%d') for ts in timestamps]}"
 interval = "1d"
 url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range={range_}&interval={interval}"
 
