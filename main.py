@@ -4,7 +4,8 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import os
 
-# Your Tiingo API token
+# Your Tiingo API tok
+# en
 API_TOKEN = os.getenv("API_MUFFIN")
 if not API_TOKEN: 
     print("❌ API token not found. Please set the API_MUFFIN environment variable.")
