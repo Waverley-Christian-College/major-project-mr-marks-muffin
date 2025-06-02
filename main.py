@@ -6,11 +6,21 @@ import os
 
 # Your Tiingo API token
 API_TOKEN = os.getenv("API_MUFFIN")
+if not API_TOKEN: 
+    print("❌ API token not found. Please set the API_MUFFIN environment variable.")
+    exit()
+
+# --- getting the current date ---
+Today_date = datetime.today().date()
+Investment_date = datetime.strptime(Date, "%d/%m/%Y").date()
 
 #--- User Input ---
-Company = ("Which company did you invest in? ")
-When = ("When did you invest into this company? ")
-Amount = ("How much did you invest into this company? ")
+Company = input("Which company did you invest in? ")
+Date = input("When did you invest into this company? ")
+Amount = int(input("How much did you invest into this company? "))
+if Amount < 0:
+    print("❌ Invalid amount. Please enter a positive number.")
+    exit()
 
 # --- Bright Data Proxy Gateway Config ---
 PROXY_HOST = "brd.superproxy.io"
