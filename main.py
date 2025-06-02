@@ -11,19 +11,16 @@ if not API_TOKEN:
     print("❌ API token not found. Please set the API_MUFFIN environment variable.")
     exit()
 
+# --- getting the current date ---
+Today_date = datetime.today().date()
+Investment_date = datetime.strptime(Date, "%d/%m/%Y").date()
+
 #--- User Input ---
 Company = input("Which company did you invest in? ")
+Date = input("When did you invest into this company? ")
 Amount = int(input("How much did you invest into this company? "))
 if Amount < 0:
     print("❌ Invalid amount. Please enter a positive number.")
-    exit()
-
-# --- getting the current date ---
-Date = input("When did you invest into this company? ")
-Today_date = datetime.today().date()
-Investment_date = datetime.strptime(Date, "%d/%m/%Y").date()
-if Investment_date > Today_date:
-    print("Sorry! How did you invest from the future?")
     exit()
 
 # --- Bright Data Proxy Gateway Config ---
@@ -47,7 +44,7 @@ timestamp = int(dt.timestamp())
 
 print(timestamp)
 symbol = f"{Company.upper()}"
-range_ = "{Investment_date = [datetime.fromtimestamp(ts).strftime('%Y-%m-%d') for ts in timestamps]}"
+range_ = f"{Investment_date = [datetime.fromtimestamp(ts).strftime('%Y-%m-%d') for ts in timestamps]}"
 interval = "1d"
 url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range={range_}&interval={interval}"
 
