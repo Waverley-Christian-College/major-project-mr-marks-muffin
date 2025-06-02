@@ -2,6 +2,25 @@ import requests
 import json
 from datetime import datetime
 import matplotlib.pyplot as plt
+import os
+
+# Your Tiingo API token
+API_TOKEN = os.getenv("API_MUFFIN")
+if not API_TOKEN: 
+    print("❌ API token not found. Please set the API_MUFFIN environment variable.")
+    exit()
+
+# --- getting the current date ---
+Today_date = datetime.today().date()
+Investment_date = datetime.strptime(Date, "%d/%m/%Y").date()
+
+#--- User Input ---
+Company = input("Which company did you invest in? ")
+Date = input("When did you invest into this company? ")
+Amount = int(input("How much did you invest into this company? "))
+if Amount < 0:
+    print("❌ Invalid amount. Please enter a positive number.")
+    exit()
 
 #--- User Input ---
 Company = ("Which company did you invest in? ")
@@ -13,7 +32,6 @@ PROXY_HOST = "brd.superproxy.io"
 PROXY_PORT = "port"
 PROXY_USER = "user_name"
 PROXY_PASS = "password"
-
 
 # --- Build proxy config for requests ---
 proxy_url = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
