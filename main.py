@@ -25,6 +25,9 @@ Investment_date = datetime.strptime(Date, "%d/%m/%Y").date()
 if Investment_date > Today_date:
     print("Sorry! How did you invest from the future?")
     exit()
+if ValueError:
+    print("❌ Sorry that isn't a valid date. Please use dd/mm/yyyy format and make sure the date is a real date.")
+    exit()
 
 # --- Bright Data Proxy Gateway Config ---
 PROXY_HOST = "brd.superproxy.io"
