@@ -44,6 +44,7 @@ proxies = {"http": proxy_url, "https": proxy_url}
 Date_str = Investment_date  # dd/mm/yyyy format
 
 # Convert string to datetime object
+Date_str = Date_str.strftime("%d/%m/%Y")  # Now it's a string
 dt = datetime.strptime(Date_str, "%d/%m/%Y")
 
 # Now it's a datetime object, so we can call .timestamp()
@@ -52,7 +53,7 @@ timestamp = int(dt.timestamp())
 print(timestamp)
 symbol = f"{Company.upper()}"
 interval = "1d"
-url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range={range_}&interval={interval}"
+url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range={range}&interval={interval}"
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
