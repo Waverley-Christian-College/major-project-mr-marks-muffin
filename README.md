@@ -5,6 +5,12 @@
 
 ## Features include:  User to pick what date they invested, how much they invested, and which company they invested into
 
+##How to use:
+
+#Enter what company you invested in
+#Then enter the amount of shares you have used
+#Then you enter the day you bought it. 
+#It will then process the inputs and plot a graph of you company.
 
 This project teaches you how to use a real-world API (Tiingo) to:
 - Fetch stock market data

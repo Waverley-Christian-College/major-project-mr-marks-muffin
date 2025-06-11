@@ -11,8 +11,13 @@ if not API_TOKEN:
     print("❌ API token not found. Please set the API_MUFFIN environment variable.")
     exit()
 
+# --- getting the current date ---
+Today_date = datetime.today().date()
+Investment_date = datetime.strptime(Today_date, "%d/%m/%Y").date()
+
 #--- User Input ---
 Company = input("Which company did you invest in? ")
+Date = input("When did you invest into this company? ")
 Amount = int(input("How much did you invest into this company? "))
 if Amount < 0:
     print("❌ Invalid amount. Please enter a positive number.")
@@ -28,7 +33,6 @@ if Investment_date > Today_date:
 if ValueError:
     print("❌ Sorry that isn't a valid date. Please use dd/mm/yyyy format and make sure the date is a real date.")
     exit()
-
 # --- Bright Data Proxy Gateway Config ---
 PROXY_HOST = "brd.superproxy.io"
 PROXY_PORT = "port"
@@ -40,17 +44,16 @@ proxy_url = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
 proxies = {"http": proxy_url, "https": proxy_url}
 
 # --- Yahoo Finance API config ---
-date_str = Investment_date  # dd/mm/yyyy format
+Date_str = Investment_date  # dd/mm/yyyy format
 
 # Convert string to datetime object
-dt = datetime.strptime(date_str, "%d/%m/%Y")
+dt = datetime.strptime(Date_str, "%d/%m/%Y")
 
 # Now it's a datetime object, so we can call .timestamp()
 timestamp = int(dt.timestamp())
 
 print(timestamp)
 symbol = f"{Company.upper()}"
-range_ = f"{Investment_date = [datetime.fromtimestamp(ts).strftime('%Y-%m-%d') for ts in timestamps]}"
 interval = "1d"
 url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range={range_}&interval={interval}"
 
@@ -80,7 +83,7 @@ try:
     # --- Plotting ---
     plt.figure(figsize=(10, 5))
     plt.plot(dates, closes, marker='o')
-    plt.title(f"{symbol} Closing Prices ({range_})")
+    plt.title(f"{symbol} Closing Prices ({range})")
     plt.xlabel("Date")
     plt.ylabel("Price (USD)")
     plt.xticks(rotation=45)
