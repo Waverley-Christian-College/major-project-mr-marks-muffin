@@ -13,7 +13,7 @@ if not API_TOKEN:
 
 # --- getting the current date ---
 Today_date = datetime.today().date()
-Investment_date = datetime.strptime(Date, "%d/%m/%Y").date()
+Investment_date = datetime.strptime(Today_date, "%d/%m/%Y").date()
 
 #--- User Input ---
 Company = input("Which company did you invest in? ")
@@ -34,17 +34,16 @@ proxy_url = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
 proxies = {"http": proxy_url, "https": proxy_url}
 
 # --- Yahoo Finance API config ---
-date_str = Investment_date  # dd/mm/yyyy format
+Date_str = Investment_date  # dd/mm/yyyy format
 
 # Convert string to datetime object
-dt = datetime.strptime(date_str, "%d/%m/%Y")
+dt = datetime.strptime(Date_str, "%d/%m/%Y")
 
 # Now it's a datetime object, so we can call .timestamp()
 timestamp = int(dt.timestamp())
 
 print(timestamp)
 symbol = f"{Company.upper()}"
-range_ = f"{Investment_date = [datetime.fromtimestamp(ts).strftime('%Y-%m-%d') for ts in timestamps]}"
 interval = "1d"
 url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range={range_}&interval={interval}"
 
@@ -74,7 +73,7 @@ try:
     # --- Plotting ---
     plt.figure(figsize=(10, 5))
     plt.plot(dates, closes, marker='o')
-    plt.title(f"{symbol} Closing Prices ({range_})")
+    plt.title(f"{symbol} Closing Prices ({range})")
     plt.xlabel("Date")
     plt.ylabel("Price (USD)")
     plt.xticks(rotation=45)
