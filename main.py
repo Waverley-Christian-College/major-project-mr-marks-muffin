@@ -13,7 +13,8 @@ if not API_TOKEN:
 
 # --- getting the current date ---
 Today_date = datetime.today().date()
-Investment_date = datetime.strptime(Today_date, "%d/%m/%Y").date()
+Investment_date = Today_date.strftime("%d/%m/%Y")
+
 
 #--- User Input ---
 Company = input("Which company did you invest in? ")
