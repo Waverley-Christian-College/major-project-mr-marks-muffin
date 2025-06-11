@@ -15,10 +15,8 @@ if not API_TOKEN:
 Today_date = datetime.today().date()
 Investment_date = Today_date.strftime("%d/%m/%Y")
 
-
 #--- User Input ---
 Company = input("Which company did you invest in? ")
-Date = input("When did you invest into this company? ")
 Amount = int(input("How much did you invest into this company? "))
 if Amount < 0:
     print("❌ Invalid amount. Please enter a positive number.")
@@ -27,11 +25,9 @@ if Amount < 0:
 # --- getting the current date ---
 Date = input("When did you invest into this company? ")
 Today_date = datetime.today().date()
-Investment_date = datetime.strptime(Date, "%d/%m/%Y").date()
-if Investment_date > Today_date:
-    print("Sorry! How did you invest from the future?")
-    exit()
-if ValueError:
+try:
+    Investment_date = datetime.strptime(Date, "%d/%m/%Y").date()
+except ValueError:
     print("❌ Sorry that isn't a valid date. Please use dd/mm/yyyy format and make sure the date is a real date.")
     exit()
 # --- Bright Data Proxy Gateway Config ---
