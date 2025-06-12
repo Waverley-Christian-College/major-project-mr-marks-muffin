@@ -29,15 +29,6 @@ try:
 except ValueError:
     print("❌ Sorry that isn't a valid date. Please use dd/mm/yyyy format and make sure the date is a real date.")
     exit()
-# --- Bright Data Proxy Gateway Config ---
-PROXY_HOST = "brd.superproxy.io"
-PROXY_PORT = "port"
-PROXY_USER = "user_name"
-PROXY_PASS = "password"
-
-# --- Build proxy config for requests ---
-proxy_url = f"http://{PROXY_USER}:{PROXY_PASS}@{PROXY_HOST}:{PROXY_PORT}"
-proxies = {"http": proxy_url, "https": proxy_url}
 
 # --- Yahoo Finance API config ---
 Date_str = Investment_date  # dd/mm/yyyy format
@@ -60,10 +51,10 @@ headers = {
 
 # --- Money made from stock ---
 
-# --- Make request through Bright Data proxy ---
+# --- Make request ---
 try:
-    print(f"🔄 Fetching stock data for {symbol} through Bright Data proxy...")
-    response = requests.get(url, headers=headers, proxies=proxies, timeout=60)
+    print(f"🔄 Fetching stock data for {symbol}...")
+    response = requests.get(url, headers=headers, params=params, timeout=30)
 
     print("✅ Status Code:", response.status_code)
     print("📄 Response Preview:")
