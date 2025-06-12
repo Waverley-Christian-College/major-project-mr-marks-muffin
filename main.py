@@ -4,8 +4,7 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import os
 
-# Your Tiingo API tok
-# en
+# Your Tiingo API token
 API_TOKEN = os.getenv("API_MUFFIN")
 if not API_TOKEN: 
     print("❌ API token not found. Please set the API_MUFFIN environment variable.")
@@ -53,11 +52,13 @@ timestamp = int(dt.timestamp())
 print(timestamp)
 symbol = f"{Company.upper()}"
 interval = "1d"
-url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range={range}&interval={interval}"
+url = f"https://api.tiingo.com/tiingo/daily/{symbol}/prices"
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
 }
+
+# --- Money made from stock ---
 
 # --- Make request through Bright Data proxy ---
 try:
