@@ -51,6 +51,15 @@ headers = {
 
 # --- Money made from stock ---
 
+start_date = Investment_date.isoformat()  # e.g. '2023-06-01'
+end_date = Today_date.isoformat()         # today's date
+
+params = {
+    "startDate": start_date,
+    "endDate": end_date,
+    "format": "json",
+    "token": API_TOKEN
+}
 # --- Make request ---
 try:
     print(f"🔄 Fetching stock data for {symbol}...")
@@ -63,9 +72,10 @@ try:
     print(json.dumps(data, indent=2))
 
     # --- Extract and format data ---
-    result = data["chart"]["result"][0]
-    dates = result["timestamp"]
-    closes = result["indicators"]["quote"][0]["close"]
+    dates = [entry['date'][:10] for entry in data]  # Keep only YYYY-MM-DD
+    closes = [entry['close'] for entry in data]
+    for d, c in zip(dates, closes):
+        print(f"{d}: ${c}")
 
     # Convert Unix timestamps to dates
     #dates = [datetime.fromtimestamp(ts).strftime('%Y-%m-%d') for ts in timestamps]
