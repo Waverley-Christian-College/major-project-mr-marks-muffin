@@ -77,6 +77,19 @@ try:
     for d, c in zip(dates, closes):
         print(f"{d}: ${c}")
 
+    # --- Telling it which numbers to use ---
+    initial_price = closes[0]
+    current_price = closes[-1]
+    Value_before = Amount
+    Value_now = Amount * (current_price / initial_price)
+    Profit = Value_now - Value_before
+    print(f"You initially invested ${Amount} into {symbol} on {Investment_date}.")
+    print(f"Your investment is now worth ${Value_now:.2f}.")
+    if Profit < 0:
+        print(f"You have lost ${abs(Profit):.2f}.")
+    else:
+        print(f"You have made a profit of ${Profit:.2f}.")
+
     # Convert Unix timestamps to dates
     #dates = [datetime.fromtimestamp(ts).strftime('%Y-%m-%d') for ts in timestamps]
 
